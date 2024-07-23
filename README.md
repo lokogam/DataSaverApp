@@ -1,84 +1,62 @@
+# DataSaverApp
 
-# Nombre del Proyecto
-
-## Descripción
-
-Breve descripción del proyecto: [Inserta aquí una breve descripción del propósito y funcionalidad del proyecto].
+DataSaverApp es una aplicación desarrollada con Laravel que permite a los usuarios gestionar y guardar datos de manera eficiente. Este proyecto utiliza Docker para facilitar su despliegue y configuración.
 
 ## Instalación
 
-Para ejecutar este proyecto en tu entorno local, sigue los siguientes pasos:
+Sigue estos pasos para clonar e instalar el proyecto:
 
-### Requisitos Previos
+### Clonar el proyecto
 
-Asegúrate de tener Docker y Docker Compose instalados en tu máquina. Laravel Sail utiliza Docker para gestionar los contenedores.
+Clona el repositorio desde GitHub:
 
-### Clonar el Repositorio
+```bash
+git clone https://github.com/lokogam/DataSaverApp.git
+cd DataSaverApp   
 
-1. Clona el repositorio:
-   ```bash
-   git clone <URL-del-repositorio>
-   cd nombre-del-proyecto
-Configuración del Entorno
-Instalar las dependencias del proyecto:
-Laravel Sail proporciona un entorno de desarrollo completo basado en Docker. Instala las dependencias ejecutando:
+## Requerimientos
+Asegúrate de tener instalados los siguientes requisitos en tu máquina:
 
-bash
+Docker
+Docker Compose
 
-./vendor/bin/sail up -d
-Configurar el archivo .env:
-
-Copia el archivo .env.example a .env:
-bash
+## Configuración del entorno
+Copia el archivo de configuración de ejemplo y actualiza las variables de entorno según sea necesario:
 
 cp .env.example .env
-Configura las variables de entorno en el archivo .env según sea necesario para tu configuración.
-Generar la clave de la aplicación:
-Ejecuta el siguiente comando para generar una nueva clave de aplicación:
 
-bash
 
-./vendor/bin/sail artisan key:generate
-Ejecutar las migraciones:
-Aplica las migraciones para crear las tablas en la base de datos:
+Instalación de dependencias
+Utiliza Docker para instalar las dependencias del proyecto con Composer:
 
-bash
-
-./vendor/bin/sail artisan migrate
-Instalar las dependencias de Node.js (si es necesario):
-Si el proyecto utiliza herramientas de frontend, asegúrate de instalar las dependencias de Node.js:
-
-bash
-
-./vendor/bin/sail npm install
-Ejecutar el Servidor de Desarrollo
-Inicia el servidor de desarrollo con Laravel Sail:
-
-bash
-
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
+    
+    Levantar los servicios
+Utiliza Docker Compose para levantar los servicios necesarios para el proyecto:
 ./vendor/bin/sail up
-Accede a la aplicación en tu navegador en http://localhost.
 
-Uso
-Formulario para guardar datos: Navega a la vista correspondiente para probar la funcionalidad AJAX.
-Documentación
-Para obtener más información sobre Laravel Sail y cómo trabajar con Docker, consulta la documentación oficial de Laravel Sail.
+
+Migrar la base de datos
+Ejecuta las migraciones para configurar la base de datos:
+./vendor/bin/sail artisan migrate
+
+Instalar y construir los assets de frontend
+Instala las dependencias de npm y construye los assets:
+./vendor/bin/sail artisan npm i
+./vendor/bin/sail artisan npm run build
+
+
+
+Acceder a la aplicación
+La aplicación estará disponible en http://localhost.
 
 Contribuciones
-Si deseas contribuir a este proyecto, por favor sigue estos pasos:
+¡Las contribuciones son bienvenidas! Por favor, sigue el flujo de trabajo estándar de GitHub (fork, feature branch, pull request).
 
-Haz un fork del repositorio.
-Crea una nueva rama para tus cambios.
-Realiza un pull request con una descripción detallada de tus cambios.
 Licencia
-Este proyecto está licenciado bajo la Licencia MIT.
-
-
-
-
-### Notas Adicionales
-
-- **Reemplaza `<URL-del-repositorio>`** con la URL real de tu repositorio.
-- **Personaliza la descripción y cualquier otra sección** según las necesidades específicas de tu proyecto.
-
-  
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
