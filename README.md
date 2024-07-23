@@ -52,6 +52,14 @@ Use Docker Compose to bring up the services needed for the project:
 ./vendor/bin/sail up -d
 ```
 
+## generate key 
+
+generate the application key 
+
+```bash
+./vendor/bin/sail artisan key:generate
+```
+
 ## Migrating the database
 
 Run the migrations to set up the database:
