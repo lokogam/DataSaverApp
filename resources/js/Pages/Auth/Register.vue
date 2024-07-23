@@ -1,3 +1,4 @@
+
 <script setup>
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
@@ -24,80 +25,79 @@ const submit = () => {
     <GuestLayout>
         <Head title="Register" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+        <div class="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+            <img src="/images/amazon-com-logo-1.svg" alt="Amazon Logo" />
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+            <h2 class="text-2xl font-semibold mb-6">Crear cuenta</h2>
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+            <form @submit.prevent="submit">
+                <div class="mb-4">
+                    <InputLabel for="name" value="Tu nombre" />
+                    <TextInput
+                        id="name"
+                        type="text"
+                        v-model="form.name"
+                        required
+                        autofocus
+                        autocomplete="name"
+                    />
+                    <InputError :message="form.errors.name" class="mt-2" />
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                <div class="mb-4">
+                    <InputLabel for="email" value="Correo electrónico" />
+                    <TextInput
+                        id="email"
+                        type="email"
+                        v-model="form.email"
+                        required
+                        autocomplete="username"
+                    />
+                    <InputError :message="form.errors.email" class="mt-2" />
+                </div>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+                <div class="mb-4">
+                    <InputLabel for="password" value="Contraseña" />
+                    <TextInput
+                        id="password"
+                        type="password"
+                        v-model="form.password"
+                        required
+                        autocomplete="new-password"
+                    />
+                    <InputError :message="form.errors.password" class="mt-2" />
+                    <p class="mt-1 text-xs text-gray-500">
+                        Debe tener al menos 6 caracteres.
+                    </p>
+                </div>
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                <div class="mb-6">
+                    <InputLabel for="password_confirmation" value="Vuelve a escribir la contraseña" />
+                    <TextInput
+                        id="password_confirmation"
+                        type="password"
+                        v-model="form.password_confirmation"
+                        required
+                        autocomplete="new-password"
+                    />
+                    <InputError :message="form.errors.password_confirmation" class="mt-2" />
+                </div>
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
-
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
-
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
-
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
-
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
-                    Already registered?
-                </Link>
-
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
+                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Crear tu cuenta de Amazon
                 </PrimaryButton>
-            </div>
-        </form>
+            </form>
+
+            <p class="mt-4 text-xs text-gray-600">
+                Al crear una cuenta, aceptas las Condiciones de Uso y el Aviso de Privacidad de Amazon.
+            </p>
+
+            <p class="mt-4 text-sm">
+                ¿Ya tienes una cuenta?
+                <Link :href="route('login')" class="text-blue-600 hover:underline">
+                    Iniciar sesión
+                </Link>
+            </p>
+        </div>
     </GuestLayout>
 </template>
