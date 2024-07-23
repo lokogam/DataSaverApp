@@ -1,77 +1,69 @@
 
 # DataSaverApp
 
-DataSaverApp es una aplicaciÃ³n desarrollada con Laravel que permite a los usuarios gestionar y guardar datos de manera eficiente. Este proyecto utiliza Docker para facilitar su despliegue y configuraciÃ³n.
+DataSaverApp is an application developed with Laravel that allows users to efficiently manage and save data. This project uses Docker to facilitate its deployment and configuration.
 
-## InstalaciÃ³n
+## Installation
 
-Sigue estos pasos para clonar e instalar el proyecto:
+Follow these steps to clone and install the project:
 
-### Clonar el proyecto
+### Clone the project
 
-Clona el repositorio desde GitHub:
+Clone the repository from GitHub:
 
 ```bash
 git clone https://github.com/lokogam/DataSaverApp.git
 cd DataSaverApp
 ```
 
-## Requerimientos
+## Requirements
 
-AsegÃºrate de tener instalados los siguientes requisitos en tu mÃ¡quina:
+Make sure you have the following requirements installed on your machine:
 
 - Docker
 - Docker Compose
 
-## ConfiguraciÃ³n del entorno
+## Environment Configuration
 
-Copia el archivo de configuraciÃ³n de ejemplo y actualiza las variables de entorno segÃºn sea necesario:
+Copy the example configuration file and update the environment variables as needed:
 
 ```bash
 cp .env.example .env
 ```
 
-## InstalaciÃ³n de dependencias
+## Installing Dependencies
 
-Utiliza Docker para instalar las dependencias del proyecto con Composer:
+Use Docker to install the project's dependencies with Composer:
 
 ```bash
 docker run --rm     -u "$(id -u):$(id -g)"     -v "$(pwd):/var/www/html"     -w /var/www/html     laravelsail/php83-composer:latest     composer install --ignore-platform-reqs
 ```
 
-## Levantar los servicios
+## Bringing up the services
 
-Utiliza Docker Compose para levantar los servicios necesarios para el proyecto:
+Use Docker Compose to bring up the services needed for the project:
 
 ```bash
 ./vendor/bin/sail up
 ```
 
-## Migrar la base de datos
+## Migrating the database
 
-Ejecuta las migraciones para configurar la base de datos:
+Run the migrations to set up the database:
 
 ```bash
 ./vendor/bin/sail artisan migrate
 ```
 
-## Instalar y construir los assets de frontend
+## Installing and building the frontend assets
 
-Instala las dependencias de npm y construye los assets:
+Install the npm dependencies and build the assets:
 
 ```bash
 ./vendor/bin/sail npm install
 ./vendor/bin/sail npm run build
 ```
 
-## Acceder a la aplicaciÃ³n
+## Accessing the application
 
-La aplicaciÃ³n estarÃ¡ disponible en [http://localhost](http://localhost).
-
-## Contribuciones
-
-Â¡Las contribuciones son bienvenidas! Por favor, sigue el flujo de trabajo estÃ¡ndar de GitHub (fork, feature branch, pull request).
-
-## Licencia
-
-Este proyecto estÃ¡ bajo la licencia MIT. Consulta el archivo LICENSE para mÃ¡s detalles.
+The application will be available at http://localhost
