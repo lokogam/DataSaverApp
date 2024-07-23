@@ -49,7 +49,7 @@ docker run --rm \
 Use Docker Compose to bring up the services needed for the project:
 
 ```bash
-./vendor/bin/sail up
+./vendor/bin/sail up -d
 ```
 
 ## Migrating the database
