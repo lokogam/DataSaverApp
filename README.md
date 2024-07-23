@@ -36,7 +36,12 @@ cp .env.example .env
 Use Docker to install the project's dependencies with Composer:
 
 ```bash
-docker run --rm     -u "$(id -u):$(id -g)"     -v "$(pwd):/var/www/html"     -w /var/www/html     laravelsail/php83-composer:latest     composer install --ignore-platform-reqs
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php83-composer:latest \
+    composer install --ignore-platform-reqs
 ```
 
 ## Bringing up the services
